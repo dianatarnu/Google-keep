@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,32 @@
 
     <link rel="stylesheet" href="index.css">
 </head>
-<body>        
+
+<body>
     <h1>Google keep</h1>
     <div class="header">
-        <button type="button" id="newButton">New Note</button>
-
-        <label>Search note<input type="search" placeholder="Search note here.."></label>
-        
+        <button type="button" id="newNoteButton">New Note</button>
+        <label>Search note<input type="search" placeholder="Search note here.." id="searchBar" onkeyup="displayTodos()"></label>
     </div>
 
-
-    <form id="form" style="display: none;">
-        <div id="items">
-            <div id="title">
-                <label>Titlu</label>
-                <input type="text" id="todoTitle">
+    <form id="form" class="modalForm" style="display: none;">
+        <div class="modalContent">
+            <span id="cancelNoteButton" class="cancel">&times;</span>
+            <div id="items">
+                <div id="title">
+                    <label>Titlu</label>
+                    <input type="text" id="todoTitle">
+                </div>
+                <div id="notes">
+                    <label>Notes</label>
+                    <input type="text" id="todoNotes">
+                </div>
             </div>
-            <div id="notes">
-                <label>Notes</label>
-                <input type="text" id="todoNotes"> 
+            <div id="buttons">
+                <button type="button" id="addNoteButton">Add</button>
+                <button type="button" id="editNoteButton">Edit</button>
+                <button type="button" id="clearNoteInputButton">Clear</button>
             </div>
-        </div>
-        <div id="buttons">
-            <button type="button" id="addButton">Add Item</button>
-            <button type="button" id="cancelButton">Cancel</button>
-            <button type="button" id="clearButton">clear</button>
         </div>
     </form>
 
@@ -40,6 +42,7 @@
 
     </section>
 
-    <script src="./main.js" ></script>
+    <script src="./main.js"></script>
 </body>
+
 </html>

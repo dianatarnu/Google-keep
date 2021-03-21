@@ -1,5 +1,4 @@
 .header {
-    margin: 20px;
     padding: 20px;
     background-color: brown;
     color: burlywood;
@@ -12,23 +11,87 @@
     padding: 10px;
     margin: 35px;
     border: 1px solid black;
-}
-
-.card {
-    background-color: lightpink;
-    color: white;
-    width: 250px;
-    height: 150px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid black;
-
-}
-
-.section {
     column-count: 4;
     display: flex;
     justify-content: flex-start;
     flex-flow: wrap;
     flex-direction: row;
 }
+
+.card {
+    background-color: rgb(255, 182, 193);
+    color: white;
+    width: 250px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.colorButton {
+    border: 1px solid black;
+    width: 40px;
+    height: 30px;
+}
+
+.redNote {
+    background-color: rgb(255, 78, 78);
+    color: white;
+}
+
+.blueNote {
+    background-color: rgb(115, 211, 255);
+    color: white;
+}
+
+.yellowNote {
+    background-color: rgb(241, 255, 115);
+    color: black;
+}
+
+.greenNote {
+    background-color: rgb(115, 255, 178);
+    color: black;
+}
+
+.pinkNote {
+    background-color: rgb(255, 182, 193);
+    color: black;
+}
+
+
+.modalForm {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    padding-top: 200px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 50%;
+    font-size: 25px;
+}
+
+.cancel {
+    color: #777777;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .colorPanel {
+    float: right;
+  }
