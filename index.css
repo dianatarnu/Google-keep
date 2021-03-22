@@ -1,97 +1,167 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #6D6875;
+    margin: 0;
+    background-color: #fae8eb;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;;
+}
+
 .header {
-    padding: 20px;
-    background-color: brown;
+    background-color: #B5838D;
     color: burlywood;
     display: flex;
     justify-content: space-between;
+    padding: 20px 100px;
+}
+
+#searchBar {
+    width: 250px;
+    padding: 10px;
+    transition:  0.5s ease-in-out;
+    font-style: italic;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid #B392AC;
+    cursor: pointer;
+}
+
+#searchBar:focus {
+    width: 40%;
+    border-radius: 5px;
+    border: 1px solid #B392AC;
+}
+
+.modalForm {
+    position: fixed; 
+    padding-top: 200px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.541); 
+}
+
+.modalContent {
+    background-color:#fae8eb;
+    margin: auto;
+    padding:25px;
+    border: 1px solid #888;
+    width: 40%;
+    font-size: 30px;
+}
+
+.closeFormDIv {
+    height: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.cancel {
+    float: right;    
+}
+
+.modalDiv {
+    padding: 15px 25px;
+}
+
+.formItem {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.input {
+    height: 30px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.buttons {
+    font-size: 17px;
+    padding: 5px 18px;
+    background-color: #B5838D;
+    color: #F8EDEB;
+    margin: 0px 10px;
+    border: 2px solid #423545;
+    border-radius: 10px;
 }
 
 #todoList {
-    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 30px 80px;
     padding: 10px;
-    margin: 35px;
-    border: 1px solid black;
-    column-count: 4;
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: wrap;
-    flex-direction: row;
+    /* background-color: violet; */
+    align-items: center;
 }
 
 .card {
     background-color: rgb(255, 182, 193);
-    color: white;
-    width: 250px;
-    height: 200px;
-    margin: 10px;
-    padding: 10px;
+    width: auto;
+    height: auto;
+    margin: 15px;
+    padding: 20px;
     border: 1px solid black;
+    border-radius: 10px;
 }
 
 .card:hover {
     transform: scale(1.1);
 }
 
+.todoContent {
+    font-size: 20px;
+    color: #6D6875;
+    padding: 15px 0px;
+}
+
+.modifyNote {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.checkmark {
+    height: 22px;
+    width: 22px;
+}
+
 .colorButton {
     border: 1px solid black;
-    width: 40px;
+    width: 35px;
     height: 30px;
 }
 
 .redNote {
-    background-color: rgb(255, 78, 78);
+    background-color: #ee8486;
     color: white;
 }
 
 .blueNote {
-    background-color: rgb(115, 211, 255);
+    background-color: #A8DADC;
     color: white;
 }
 
 .yellowNote {
-    background-color: rgb(241, 255, 115);
+    background-color: #FDFFB6;
     color: black;
 }
 
 .greenNote {
-    background-color: rgb(115, 255, 178);
+    background-color: #CAFFBF;
     color: black;
 }
 
 .pinkNote {
-    background-color: rgb(255, 182, 193);
+    background-color: #FFC6FF;
     color: black;
 }
 
 
-.modalForm {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    padding-top: 200px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.modalContent {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 50px;
-    border: 1px solid #888;
-    width: 50%;
-    font-size: 25px;
-}
-
-.cancel {
-    color: #777777;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  .colorPanel {
-    float: right;
-  }

@@ -12,9 +12,11 @@ function getTodoById(id) {
 
 //Open form for new TOdo
 const newNoteButton = document.querySelector('#newNoteButton');
+// const newNoteButton = document.querySelector('#clickableDiv');
 newNoteButton.addEventListener('click', displayAddTodo);
 function displayAddTodo() {
 	editButton.style.display = "none";
+	addButton.style.display = "inline";
     const addNoteForm = document.querySelector('#form');
     
     if (addNoteForm.style.display === "none") {
@@ -55,6 +57,7 @@ editButton.addEventListener('click', editTodo);
 async function displayEditTodo(){
 	const editNoteForm = document.querySelector('#form');
 	addButton.style.display = "none";
+	editButton.style.display = "inline";
 
     if (editNoteForm.style.display === "none") {
         editNoteForm.style.display = "block";
@@ -68,17 +71,18 @@ async function displayEditTodo(){
 
 	const currentTodo = await getTodoById(todoId);
 
-	const todoTitle =  document.querySelector('#todoNotes');
+	const todoTitle =  document.querySelector('#todoTitle');
 	todoTitle.value = currentTodo.title;
 
-	const todoNotes = document.querySelector('#todoTitle');
+	const todoNotes = document.querySelector('#todoNotes');
 	todoNotes.value = currentTodo.text;
 }
 
 function editTodo(){
 	const editNoteForm = document.querySelector('#form');
-	const text = document.querySelector('#todoNotes').value;	
+	
 	const title = document.querySelector('#todoTitle').value;
+	const text = document.querySelector('#todoNotes').value;
 
 	const todoId = editNoteForm.getAttribute('todoId');
 
@@ -90,19 +94,6 @@ function editTodo(){
 	.then(() => displayTodos());
 
 	cancelNewTodo();
-}
-
-//Delete TODO
-function deleteTodo() {
-	deleteTodoById(this.id);	
-}
-
-function deleteTodoById(id) {
-	fetch(url + "/" + id, {
-		method: 'DELETE',
-		headers: { 'Content-Type': 'application/json' }
-	})
-		.then(() => displayTodos());
 }
 
 //Cancel todo
@@ -124,8 +115,8 @@ function clearInput() {
 }
 
 async function displayTodos() {
-	searcInput = document.getElementById('searchBar');
-	filter = searcInput.value;
+	var searchInput = document.getElementById('searchBar');
+	var filter = searchInput.value;
 
 	const todos = await getTodos();
 
@@ -136,6 +127,8 @@ async function displayTodos() {
 	const todosHtml = createTodosHtml(filteredTodos);
 	const section = document.querySelector('#todoList');
     section.setAttribute("class", "section");
+
+	// searchInput.removeEventListener('click', displayAddTodo);
 
 	section.innerHTML = null;
 	section.append(todosHtml);
@@ -150,15 +143,14 @@ function createTodosHtml(todos)  {
 
 		const content = document.createElement('div');
         const title = document.createElement('h2');
-		const text = document.createElement('p');	
-		const checkbox = document.createElement('input');
+		const text = document.createElement('li');	
 
 		const buttons = document.createElement('div');
         const deleteItem = document.createElement('span');
-		// const editItem = document.createElement('button');
 
+		const modifyNote = document.createElement('div');
 		const colors = document.createElement('div');
-
+		const checkbox = document.createElement('input');
 		const redNote = document.createElement('button');
 		const blueNote = document.createElement('button');
 		const yellowNote = document.createElement('button');
@@ -171,12 +163,13 @@ function createTodosHtml(todos)  {
 		greenNote.setAttribute("class", "greenNote colorButton");
 		pinkNote.setAttribute("class", "pinkNote colorButton");
 
+		content.setAttribute("class", "todoContent");
+
 		redNote.addEventListener('click', colorNoteRed);
 		blueNote.addEventListener('click', colorNoteBlue);
 		yellowNote.addEventListener('click', colorNoteYellow);
 		greenNote.addEventListener('click', colorNoteGreen);
 		pinkNote.addEventListener('click', colorNotePink);
-
 
 		function colorNoteRed() {
 			card.setAttribute('class', 'redNote card');
@@ -200,8 +193,8 @@ function createTodosHtml(todos)  {
 
 		text.innerHTML = todo.text;
         title.innerHTML = todo.title;
-		title.setAttribute('todoId', todo.id);
-		title.addEventListener('click', displayEditTodo);
+		content.setAttribute('todoId', todo.id);
+		content.addEventListener('click', displayEditTodo);
 		deleteItem.textContent = "X";
 		deleteItem.id = todo.id;
 
@@ -211,27 +204,48 @@ function createTodosHtml(todos)  {
 
         deleteItem.addEventListener('click', deleteTodo);
  
-		text.prepend(checkbox);         
 		content.append(title);
         content.append(text);
 
-		buttons.append(deleteItem);  
+		buttons.append(deleteItem); 
 
 		colors.append(redNote);
 		colors.append(blueNote);
 		colors.append(yellowNote);
 		colors.append(greenNote);
 		colors.append(pinkNote);
+		modifyNote.append(checkbox);  
+		modifyNote.append(colors);
 		
 		card.append(buttons);
 		card.append(content);
-		card.append(colors);
+		card.append(modifyNote);
 
         fragment.append(card);
 
-		colors.setAttribute("class", 'colorPanel');
         card.setAttribute("class",'card');
-		deleteItem.setAttribute('class', 'cancel')
+		checkbox.setAttribute('class', "checkmark");
+		modifyNote.setAttribute("class", "modifyNote");
+		deleteItem.setAttribute('class', 'cancel');
+
+		function deleteTodo() {
+			const text = document.querySelector('#todoNotes').value;	
+			const title = document.querySelector('#todoTitle').value;
+
+			const payload = { 
+				text,
+				title, 
+				completed: false 
+			};
+
+			fetch(url + "/" + todo.id, {
+				method: 'DELETE',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(payload)
+			})
+				.then(() => displayTodos());
+		}
+		
 	});
 	return fragment;
 }

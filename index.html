@@ -10,30 +10,35 @@
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
-    <h1>Google keep</h1>
-    <div class="header">
-        <button type="button" id="newNoteButton">New Note</button>
-        <label>Search note<input type="search" placeholder="Search note here.." id="searchBar" onkeyup="displayTodos()"></label>
+<body >
+    <div id="clickableDiv">
+        <h1>Google Keep</h1>
+        <div class="header">
+            <button type="button" id="newNoteButton" class="buttons">New Note</button>
+            <input type="search" placeholder="Search note here.." id="searchBar" onkeyup="displayTodos()">
+        </div>
     </div>
 
     <form id="form" class="modalForm" style="display: none;">
         <div class="modalContent">
-            <span id="cancelNoteButton" class="cancel">&times;</span>
-            <div id="items">
-                <div id="title">
+            <div class="closeFormDIv">
+                <span id="cancelNoteButton" class="cancel">&times;</span>
+            </div>
+
+            <div id="items" class="modalDiv">
+                <div id="title"  class="formItem">
                     <label>Titlu</label>
-                    <input type="text" id="todoTitle">
+                    <input type="text" id="todoTitle" class="input">
                 </div>
-                <div id="notes">
+                <div id="notes" class="formItem">
                     <label>Notes</label>
-                    <input type="text" id="todoNotes">
+                    <input type="text" id="todoNotes" class="input">
                 </div>
             </div>
-            <div id="buttons">
-                <button type="button" id="addNoteButton">Add</button>
-                <button type="button" id="editNoteButton">Edit</button>
-                <button type="button" id="clearNoteInputButton">Clear</button>
+            <div id="buttons" class="modalDiv">
+                <button type="button" id="addNoteButton" class="buttons">Add</button>
+                <button type="button" id="editNoteButton" class="buttons">Save</button>
+                <button type="button" id="clearNoteInputButton" class="buttons">Clear</button>
             </div>
         </div>
     </form>
