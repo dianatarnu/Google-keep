@@ -7,40 +7,28 @@
       "id": 3
     },
     {
-      "text": "0,3%",
+      "text": "and butter",
       "title": "buy milk",
       "completed": false,
       "id": 9
     },
     {
-      "text": "afa",
-      "title": "gesg",
-      "completed": false,
-      "id": 13
-    },
-    {
-      "text": "dadada",
-      "title": "gwegew",
-      "completed": false,
-      "id": 14
-    },
-    {
       "text": "whiskas",
       "title": "Food for the cat",
-      "completed": false,
+      "completed": true,
       "id": 15
-    },
-    {
-      "text": "gsd",
-      "title": "diana",
-      "completed": false,
-      "id": 16
     },
     {
       "text": "Orange juice",
       "title": "drinks",
       "completed": false,
       "id": 17
+    },
+    {
+      "text": "all",
+      "title": "Pay the bills",
+      "completed": false,
+      "id": 18
     }
   ]
 }

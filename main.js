@@ -131,8 +131,6 @@ async function displayTodos() {
 	const section = document.querySelector('#todoList');
     section.setAttribute("class", "section");
 
-	// searchInput.removeEventListener('click', displayAddTodo);
-
 	section.innerHTML = null;
 	section.append(todosHtml);
 	section.addEventListener('click', handleCheckboxClick);
