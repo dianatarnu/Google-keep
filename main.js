@@ -11,8 +11,8 @@ function getTodoById(id) {
 }
 
 //Open form for new TOdo
-const newNoteButton = document.querySelector('#newNoteButton');
-// const newNoteButton = document.querySelector('#clickableDiv');
+// const newNoteButton = document.querySelector('#newNoteButton');
+const newNoteButton = document.querySelector('#clickableDiv');
 newNoteButton.addEventListener('click', displayAddTodo);
 function displayAddTodo() {
 	editButton.style.display = "none";
@@ -93,6 +93,7 @@ function editTodo(){
 	})
 	.then(() => displayTodos());
 
+	clearInput();
 	cancelNewTodo();
 }
 
@@ -105,6 +106,8 @@ function cancelNewTodo() {
     if (newItem.style.display === "block") {
         newItem.style.display = "none";
     }
+
+	clearInput();
 }
 
 //clear input
